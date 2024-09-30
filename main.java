@@ -113,4 +113,22 @@ public void addCustomer(Customer customer){
         System.out.println("Car is not available for rent");
     }
     }
+
+    public void returnCar(Car car){
+        car.returnCar();
+        Rental rentalToRemove = null;
+        for (Rental rental : rentals) {
+            if (rental.getCar() == car) {
+                rentalToRemove= rental;
+                break;
+            }
+        }
+        if (rentalToRemove != null) {
+            rentals.remove(rentalToRemove);
+            System.out.println("Car returned successfully");
+        } else{
+            System.out.println("Car was not rented");
+        }
+    }
+
  }
